@@ -1,23 +1,22 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Engine/GameInstance.h"
-#include "SAgentInfo.h"
-#include "BaseGameInstance.generated.h"
+#include "GameFramework/PlayerController.h"
+#include "BasePlayerController.generated.h"
 
 UCLASS()
-class BIRDOFPREY_API UBaseGameInstance : public UGameInstance
+class BIRDOFPREY_API ABasePlayerController : public APlayerController
 {
     GENERATED_BODY()
 
 public:
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "BirdOfPrey")
-    TArray<FSAgentInfo> PlayerAgentInfo;
+    bool bDiedWhileFiring;
 
     UFUNCTION(BlueprintCallable, Category = "BirdOfPrey")
-    void SetPlayerAgentInfoFor();
+    void CalcScreenDimensions();
 
     UFUNCTION(BlueprintCallable, Category = "BirdOfPrey")
-    void GetPlayerAgentInfoFor();
+    void OnPlayerDeath();
 };
